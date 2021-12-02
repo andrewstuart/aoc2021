@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-func maina() {
-	f, err := os.OpenFile("input", os.O_RDONLY, 0400)
+func main() {
+	f, err := os.OpenFile("../input", os.O_RDONLY, 0400)
 	if err != nil {
 		log.Fatal(err)
 	}
