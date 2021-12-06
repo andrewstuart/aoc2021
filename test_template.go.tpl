@@ -1,4 +1,4 @@
-package main_test
+package main
 
 import (
 	"bufio"
@@ -17,5 +17,6 @@ func TestAOC(t *testing.T) {
 
 	out, err := aoc(bufio.NewReader(f))
 	asrt.NoError(err)
+  // TODO replace assert expected value here
 	asrt.Equal(100, out)
 }
