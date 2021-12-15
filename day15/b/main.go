@@ -128,17 +128,32 @@ func aoc(r io.Reader) (int, error) {
 
 	h := &Cells{}
 
-	graph := myaoc.Make2DSlice(len(input), len(input[0]), func(i, j int) *Cell {
+	x, y := len(input), len(input[0])
+	graph := myaoc.Make2DSlice(5*x, 5*y, func(i, j int) *Cell {
+		in := int(input[i%x][j%y] - 48)
+		in += i / x
+		in += j / y
+		if in > 9 {
+			in = 1 + (in % 10)
+		}
+
 		cell := &Cell{
 			i:       i,
 			j:       j,
 			heapIdx: h.Len(),
-			n:       int(input[i][j] - 48),
+			n:       in,
 			cost:    math.Inf(1),
 		}
 		heap.Push(h, cell)
 		return cell
 	})
+
+	// for _, g := range graph {
+	// 	for _, n := range g {
+	// 		fmt.Print(n.n)
+	// 	}
+	// 	fmt.Println()
+	// }
 
 	graph[0][0].cost = float64(graph[0][0].n)
 	heap.Init(h)

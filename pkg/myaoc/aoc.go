@@ -14,7 +14,7 @@ func Make2DSlice[T any](i, j int, f func(i, j int) T) [][]T {
 
 // IsSafe returns for any 2d slice whether the given ints are in bounds
 func IsSafe[T any](ts [][]T, i, j int) bool {
-	return i > 0 && i < len(ts) && len(ts) > 0 && j > 0 && j < len(ts[0])
+	return i >= 0 && j >= 0 && i < len(ts) && len(ts) > 0 && j < len(ts[0])
 }
 
 func SliceNeighbors[T any](ts [][]T, n, m int) []T {
