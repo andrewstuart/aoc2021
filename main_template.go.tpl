@@ -6,10 +6,13 @@ import (
 	"io"
 	"log"
 	"os"
+
+	"astuart.co/advent2020/pkg/myaoc"
+	"github.com/davecgh/go-spew/spew"
 )
 
 func main() {
-	f, err := os.OpenFile("{{ .Config.Output }}", os.O_RDONLY, 0400)
+	f, err := os.OpenFile("../input", os.O_RDONLY, 0400)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -25,18 +28,14 @@ func main() {
 }
 
 func aoc(r io.Reader) (int, error) {
-	br := bufio.NewReader(r)
-
-	for {
-		st, err := br.ReadString('\n')
-		if err != nil {
-			log.Println(err)
-			break
-		}
-
-		// TODO: write string
-		log.Println(st)
+	inputs, err := myaoc.ReadAOC(r, func(st string) string {
+		return st
+	})
+	if err != nil {
+		return 0, err
 	}
+
+	spew.Dump(inputs)
 
 	return 0, fmt.Errorf("not implemented")
 }
