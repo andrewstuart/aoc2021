@@ -28,8 +28,10 @@ func main() {
 }
 
 func aoc(r io.Reader) (int, error) {
-	inputs, err := myaoc.ReadAOC(r, func(st string) string {
-		return st
+	inputs, err := myaoc.ReadAOC(r, func(st string) (string, error) {
+    if st == "" {
+      return st, io.EOF
+		return st, nil
 	})
 	if err != nil {
 		return 0, err

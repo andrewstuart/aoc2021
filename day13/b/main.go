@@ -28,11 +28,6 @@ func main() {
 	log.Println(out)
 }
 
-type Fold struct {
-	Direction string
-	Index     int
-}
-
 func aoc(r io.Reader) (int, error) {
 	maxx, maxy := 0, 0
 	br := bufio.NewReader(r)
@@ -52,6 +47,10 @@ func aoc(r io.Reader) (int, error) {
 	})
 	if err != nil {
 		return 0, fmt.Errorf("error reading points: %w", err)
+	}
+	type Fold struct {
+		Direction string
+		Index     int
 	}
 
 	folds, err := myaoc.ReadAOC(br, func(st string) (Fold, error) {

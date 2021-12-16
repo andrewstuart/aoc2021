@@ -4,8 +4,10 @@ go 1.18
 
 require (
 	github.com/davecgh/go-spew v1.1.1
+	github.com/oyi812/bitpack v0.1.1
 	github.com/sirupsen/logrus v1.8.1
 	github.com/stretchr/testify v1.7.0
+	github.com/yourbasic/bit v0.0.0-20180313074424-45a4409f4082
 )
 
 require (

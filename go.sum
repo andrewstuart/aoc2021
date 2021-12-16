@@ -1,6 +1,8 @@
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/oyi812/bitpack v0.1.1 h1:4P+Baw1DXmu1g7u/FnmU8OLgqQojnyKWw8poUv8KgFw=
+github.com/oyi812/bitpack v0.1.1/go.mod h1:UM1Njquokat6+1MHFszQPqiyhp0WqyK8NkWkJOhisfc=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/sirupsen/logrus v1.8.1 h1:dJKuHgqk1NNQlqoA6BTlM1Wf9DOH3NBjQyu0h9+AZZE=
@@ -9,6 +11,8 @@ github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
 github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
+github.com/yourbasic/bit v0.0.0-20180313074424-45a4409f4082 h1:AWIZQ6fJPAAZdCUElj007LvHa/ER8nOn3CHWajn+1QY=
+github.com/yourbasic/bit v0.0.0-20180313074424-45a4409f4082/go.mod h1:SC4yTthuwUIud4hT6D7kJGIYmhnskaQnm3VD2VYM8EM=
 golang.org/x/exp v0.0.0-20211214223157-bafe2e20209a h1:AAl9OocndjmqsjP37NRIXRsHZooES2MX3Imla+GKe5o=
 golang.org/x/exp v0.0.0-20211214223157-bafe2e20209a/go.mod h1:b9TAUYHmRtqA6klRHApnXMnj+OyLce4yF5cZCUbk2ps=
 golang.org/x/sys v0.0.0-20191026070338-33540a1f6037/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
