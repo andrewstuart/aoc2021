@@ -10,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"astuart.co/advent2020/internal/ezaoc"
+	"astuart.co/advent2020/pkg/ezaoc"
 )
 
 type Cell struct {

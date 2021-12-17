@@ -8,8 +8,9 @@ import (
 	"os"
 	"sort"
 	"strings"
+	"time"
 
-	"astuart.co/advent2020/internal/ezaoc"
+	"astuart.co/advent2020/pkg/ezaoc"
 )
 
 func main() {
@@ -21,11 +22,13 @@ func main() {
 
 	br := bufio.NewReader(f)
 
+	t := time.Now()
 	out, err := aoc(br, 40)
 	if err != nil {
 		log.Fatal("error in aoc method: ", err)
 	}
 	log.Println(out)
+	fmt.Println(time.Since(t))
 }
 
 type Seq struct {
@@ -33,6 +36,7 @@ type Seq struct {
 }
 
 func aoc(r io.Reader, n int) (int, error) {
+	t := time.Now()
 	br := bufio.NewReader(r)
 	head, err := br.ReadString('\n')
 	if err != nil {
@@ -54,6 +58,7 @@ func aoc(r io.Reader, n int) (int, error) {
 	if err != nil {
 		return 0, err
 	}
+	fmt.Println(time.Since(t))
 
 	m := map[string]string{}
 	for _, in := range inputs {
@@ -68,6 +73,9 @@ func aoc(r io.Reader, n int) (int, error) {
 	for _, ch := range head {
 		counts[string([]rune{ch})]++
 	}
+
+	t = time.Now()
+	// Main loop
 	for i := 0; i < n; i++ {
 		inc := map[string]int{}
 
@@ -80,6 +88,7 @@ func aoc(r io.Reader, n int) (int, error) {
 		}
 		syllables = inc
 	}
+	fmt.Printf("time.Since(t): %v\n", time.Since(t))
 
 	type charct struct {
 		ch string

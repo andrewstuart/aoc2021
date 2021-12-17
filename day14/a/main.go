@@ -9,7 +9,7 @@ import (
 	"sort"
 	"strings"
 
-	"astuart.co/advent2020/internal/ezaoc"
+	"astuart.co/advent2020/pkg/ezaoc"
 	"github.com/davecgh/go-spew/spew"
 )
 

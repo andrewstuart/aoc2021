@@ -7,7 +7,7 @@ import (
 	"log"
 	"os"
 
-	"astuart.co/advent2020/pkg/myaoc"
+	"astuart.co/advent2020/pkg/ezaoc"
 	"github.com/davecgh/go-spew/spew"
 )
 
@@ -28,7 +28,7 @@ func main() {
 }
 
 func aoc(r io.Reader) (int, error) {
-	inputs, err := myaoc.ReadAOC(r, func(st string) (string, error) {
+	inputs, err := ezaoc.ReadAOC(r, func(st string) (string, error) {
     if st == "" {
       return st, io.EOF
     }
