@@ -1,4 +1,4 @@
-package myaoc
+package ezaoc
 
 import (
 	"bufio"

@@ -1,4 +1,4 @@
-package myaoc
+package ezaoc
 
 // Make2DSlice creates a 2d slice of type T and sets i,j of the 2d array to the
 // result of f(i,j)

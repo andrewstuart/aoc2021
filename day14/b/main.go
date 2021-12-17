@@ -9,7 +9,7 @@ import (
 	"sort"
 	"strings"
 
-	"astuart.co/advent2020/pkg/myaoc"
+	"astuart.co/advent2020/pkg/ezaoc"
 )
 
 func main() {
@@ -40,7 +40,7 @@ func aoc(r io.Reader, n int) (int, error) {
 	}
 	head = strings.TrimSpace(head)
 
-	inputs, err := myaoc.ReadAOC(br, func(st string) Seq {
+	inputs, err := ezaoc.ReadAOC(br, func(st string) Seq {
 		strs := strings.Split(st, " -> ")
 		return Seq{
 			From: strs[0],

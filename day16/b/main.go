@@ -8,7 +8,7 @@ import (
 	"math"
 	"os"
 
-	"astuart.co/advent2020/pkg/myaoc"
+	"astuart.co/advent2020/pkg/ezaoc"
 	"github.com/oyi812/bitpack"
 )
 
@@ -94,7 +94,7 @@ func (p packet) eval() uint64 {
 }
 
 func aoc(r io.Reader) (int, error) {
-	inputs, err := myaoc.ReadAOC(r, func(st string) ([]byte, error) {
+	inputs, err := ezaoc.ReadAOC(r, func(st string) ([]byte, error) {
 		if st == "" {
 			return nil, io.EOF
 		}

@@ -1,4 +1,4 @@
-package myaoc
+package ezaoc
 
 func GroupByFunc[T, V any, K comparable](ts []T, f func(T) (K, V)) map[K][]V {
 	m := map[K][]V{}

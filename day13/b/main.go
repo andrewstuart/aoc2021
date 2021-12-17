@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"astuart.co/advent2020/pkg/myaoc"
+	"astuart.co/advent2020/pkg/ezaoc"
 )
 
 func main() {
@@ -31,9 +31,9 @@ func main() {
 func aoc(r io.Reader) (int, error) {
 	maxx, maxy := 0, 0
 	br := bufio.NewReader(r)
-	inputs, err := myaoc.ReadAOC(br, func(st string) ([2]int, error) {
+	inputs, err := ezaoc.ReadAOC(br, func(st string) ([2]int, error) {
 		if st == "" {
-			return [2]int{}, myaoc.ErrDone
+			return [2]int{}, ezaoc.ErrDone
 		}
 		var a [2]int
 		fmt.Sscanf(st, "%d,%d", &a[0], &a[1])
@@ -53,10 +53,10 @@ func aoc(r io.Reader) (int, error) {
 		Index     int
 	}
 
-	folds, err := myaoc.ReadAOC(br, func(st string) (Fold, error) {
+	folds, err := ezaoc.ReadAOC(br, func(st string) (Fold, error) {
 		var f Fold
 		if st == "" {
-			return f, myaoc.ErrDone
+			return f, ezaoc.ErrDone
 		}
 
 		fs := strings.Fields(st)
@@ -71,9 +71,9 @@ func aoc(r io.Reader) (int, error) {
 		return 0, fmt.Errorf("error reading folds: %w", err)
 	}
 
-	s := myaoc.SetFrom(inputs)
+	s := ezaoc.SetFrom(inputs)
 
-	paper := myaoc.Make2DSlice(maxx+1, maxy+1, func(i, j int) bool {
+	paper := ezaoc.Make2DSlice(maxx+1, maxy+1, func(i, j int) bool {
 		return s.Contains([2]int{i, j})
 	})
 

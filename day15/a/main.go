@@ -10,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"astuart.co/advent2020/pkg/myaoc"
+	"astuart.co/advent2020/pkg/ezaoc"
 )
 
 type Cell struct {
@@ -95,7 +95,7 @@ func aoc(r io.Reader) (int, error) {
 		input = append(input, strings.TrimSpace(st))
 	}
 
-	// graph := myaoc.Make2DSlice(len(input), len(input[0]), func(i, j int) int {
+	// graph := ezaoc.Make2DSlice(len(input), len(input[0]), func(i, j int) int {
 	// 	return int(input[i][j] - 48)
 	// })
 
@@ -128,7 +128,7 @@ func aoc(r io.Reader) (int, error) {
 
 	h := &Cells{}
 
-	graph := myaoc.Make2DSlice(len(input), len(input[0]), func(i, j int) *Cell {
+	graph := ezaoc.Make2DSlice(len(input), len(input[0]), func(i, j int) *Cell {
 		cell := &Cell{
 			i:       i,
 			j:       j,
@@ -143,7 +143,7 @@ func aoc(r io.Reader) (int, error) {
 	graph[0][0].cost = float64(graph[0][0].n)
 	heap.Init(h)
 
-	seen := myaoc.Set[[2]int]{}
+	seen := ezaoc.Set[[2]int]{}
 
 	for h.Len() > 0 {
 		next := heap.Pop(h).(*Cell)
@@ -151,7 +151,7 @@ func aoc(r io.Reader) (int, error) {
 			break
 		}
 		seen.Add([2]int{next.i, next.j})
-		for _, n := range myaoc.SliceNeighbors(graph, next.i, next.j) {
+		for _, n := range ezaoc.SliceNeighbors(graph, next.i, next.j) {
 			if !(next.i == n.i || next.j == n.j) { // constrain to sideways
 				continue
 			}
