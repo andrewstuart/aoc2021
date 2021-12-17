@@ -7,7 +7,7 @@ import (
 	"log"
 	"os"
 
-	"astuart.co/advent2020/pkg/ezaoc"
+	"astuart.co/advent2020/internal/ezaoc"
 	"github.com/oyi812/bitpack"
 )
 
