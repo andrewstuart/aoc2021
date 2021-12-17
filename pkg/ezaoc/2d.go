@@ -20,13 +20,22 @@ func IsSafe[T any](ts [][]T, i, j int) bool {
 	return gtZero && inBounds
 }
 
+type Cell[T any] struct {
+	I, J  int
+	Value T
+}
+
+func (c Cell[T]) Point() [2]int {
+	return [2]int{c.I, c.J}
+}
+
 // SliceNeighbors is a utility function to get the elements surrounding a particular 2d index.
-func SliceNeighbors[T any](ts [][]T, n, m int) []T {
-	var out []T
+func SliceNeighbors[T any](ts [][]T, n, m int) []Cell[T] {
+	var out []Cell[T]
 	for i := n - 1; i < n+2; i++ {
 		for j := m - 1; j < m+2; j++ {
 			if IsSafe(ts, i, j) && !(i == n && j == m) { // You are not your own neighbor
-				out = append(out, ts[i][j])
+				out = append(out, Cell[T]{I: i, J: j, Value: ts[i][j]})
 			}
 		}
 	}
@@ -35,12 +44,12 @@ func SliceNeighbors[T any](ts [][]T, n, m int) []T {
 
 // NonDiagSliceNeighbors is a utility function to get the elements surrounding a
 // particular 2d index
-func NonDiagSliceNeighbors[T any](ts [][]T, n, m int) []T {
-	var out []T
+func NonDiagSliceNeighbors[T any](ts [][]T, n, m int) []Cell[T] {
+	var out []Cell[T]
 	for i := n - 1; i < n+2; i++ {
 		for j := m - 1; j < m+2; j++ {
 			if IsSafe(ts, i, j) && !(i == n && j == m) && !(i != n && j != m) { // You are not your own neighbor, ignore diags
-				out = append(out, ts[i][j])
+				out = append(out, Cell[T]{I: i, J: j, Value: ts[i][j]})
 			}
 		}
 	}
@@ -49,10 +58,10 @@ func NonDiagSliceNeighbors[T any](ts [][]T, n, m int) []T {
 
 // VisitNeighbors iterates over a 2d array, calling a func with each index and
 // a list of neighbors.
-func VisitNeighbors[T any](ts [][]T, f func(i, j int, ns []T) error) {
+func VisitNeighbors[T any](ts [][]T, f func(Cell[T], []Cell[T]) error) {
 	for i, row := range ts {
 		for j := range row {
-			if f(i, j, SliceNeighbors(ts, i, j)) != nil {
+			if f(Cell[T]{I: i, J: j, Value: ts[i][j]}, SliceNeighbors(ts, i, j)) != nil {
 				return
 			}
 		}
@@ -61,10 +70,10 @@ func VisitNeighbors[T any](ts [][]T, f func(i, j int, ns []T) error) {
 
 // VisitNeighbors iterates over a 2d array, calling a func with each index and
 // a list of neighbors.
-func VisitNonDiagNeighbors[T any](ts [][]T, f func(i, j int, ns []T) error) {
+func VisitNonDiagNeighbors[T any](ts [][]T, f func(Cell[T], []Cell[T]) error) {
 	for i, row := range ts {
 		for j := range row {
-			if f(i, j, NonDiagSliceNeighbors(ts, i, j)) != nil {
+			if f(Cell[T]{I: i, J: j, Value: ts[i][j]}, NonDiagSliceNeighbors(ts, i, j)) != nil {
 				return
 			}
 		}

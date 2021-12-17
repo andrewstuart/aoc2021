@@ -35,14 +35,13 @@ func aoc(r io.Reader) (int, error) {
 	spew.Dump(inputs)
 
 	out := 0
-	ezaoc.VisitNonDiagNeighbors(inputs, func(i, j int, ns []int) error {
-		val := inputs[i][j]
+	ezaoc.VisitNonDiagNeighbors(inputs, func(c ezaoc.Cell[int], ns []ezaoc.Cell[int]) error {
 		for _, v := range ns {
-			if v <= val {
+			if v.Value <= c.Value {
 				return nil
 			}
 		}
-		out += 1 + val
+		out += 1 + c.Value
 		return nil
 	})
 

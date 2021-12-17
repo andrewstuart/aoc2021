@@ -38,7 +38,7 @@ func aoc(r io.Reader) (int, error) {
 	br := bufio.NewReader(r)
 	inputs, err := ezaoc.ReadAOC(br, func(st string) ([2]int, error) {
 		if st == "" {
-			return [2]int{}, ezaoc.ErrDone
+			return [2]int{}, io.EOF
 		}
 		var a [2]int
 		fmt.Sscanf(st, "%d,%d", &a[0], &a[1])
@@ -57,7 +57,7 @@ func aoc(r io.Reader) (int, error) {
 	folds, err := ezaoc.ReadAOC(br, func(st string) (Fold, error) {
 		var f Fold
 		if st == "" {
-			return f, ezaoc.ErrDone
+			return f, io.EOF
 		}
 
 		fs := strings.Fields(st)

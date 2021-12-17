@@ -152,13 +152,13 @@ func aoc(r io.Reader) (int, error) {
 		}
 		seen.Add([2]int{next.i, next.j})
 		for _, n := range ezaoc.SliceNeighbors(graph, next.i, next.j) {
-			if !(next.i == n.i || next.j == n.j) { // constrain to sideways
+			if !(next.i == n.I || next.j == n.J) { // constrain to sideways
 				continue
 			}
-			if !seen.Contains([2]int{n.i, n.j}) && next.cost+float64(n.n) <= n.cost {
-				n.prev = next
-				n.cost = float64(n.n) + next.cost
-				heap.Fix(h, n.heapIdx)
+			if !seen.Contains([2]int{n.I, n.J}) && next.cost+float64(n.Value.n) <= n.Value.cost {
+				n.Value.prev = next
+				n.Value.cost = float64(n.Value.n) + next.cost
+				heap.Fix(h, n.Value.heapIdx)
 			}
 		}
 	}

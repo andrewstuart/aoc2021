@@ -18,5 +18,5 @@ func TestAOC(t *testing.T) {
 	out, err := aoc(bufio.NewReader(f))
 	asrt.NoError(err)
 	// TODO replace assert expected value here
-	asrt.Equal(15, out)
+	asrt.Equal(1134, out)
 }

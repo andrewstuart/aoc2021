@@ -10,13 +10,13 @@ func (q Queue[T]) Len() int {
 	return len(q)
 }
 
-func (q Queue[T]) Enqueue(t T) {
-	q = append(q, t)
+func (q *Queue[T]) Enqueue(t T) {
+	*q = append((*q), t)
 }
 
-func (q Queue[T]) Dequeue() T {
-	o := q[0]
-	q = q[1:]
+func (q *Queue[T]) Dequeue() T {
+	o := (*q)[0]
+	*q = (*q)[1:]
 	return o
 }
 

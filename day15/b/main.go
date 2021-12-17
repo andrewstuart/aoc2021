@@ -95,37 +95,6 @@ func aoc(r io.Reader) (int, error) {
 		input = append(input, strings.TrimSpace(st))
 	}
 
-	// graph := ezaoc.Make2DSlice(len(input), len(input[0]), func(i, j int) int {
-	// 	return int(input[i][j] - 48)
-	// })
-
-	// var i, j, cost int
-	// for {
-	// 	cost += graph[i][j]
-	// 	fmt.Printf("%d,%d: %d\n", i, j, graph[i][j])
-	// 	if i+1 >= len(graph) && j+1 >= len(graph[0]) {
-	// 		break
-	// 	}
-	// 	if i+1 >= len(graph) {
-	// 		j++
-	// 		continue
-	// 	}
-	// 	if j+1 >= len(graph[0]) {
-	// 		i++
-	// 		continue
-	// 	}
-	// 	j1 := graph[i][j+1]
-	// 	fmt.Printf("j1 = %+v\n", j1)
-	// 	i1 := graph[i+1][j]
-	// 	fmt.Printf("i1 = %+v\n", i1)
-	// 	if j1 < i1 {
-	// 		j++
-	// 		continue
-	// 	}
-	// 	i++
-	// }
-	// return cost, nil
-
 	h := &Cells{}
 
 	x, y := len(input), len(input[0])
@@ -167,13 +136,13 @@ func aoc(r io.Reader) (int, error) {
 		}
 		seen.Add([2]int{next.i, next.j})
 		for _, n := range ezaoc.SliceNeighbors(graph, next.i, next.j) {
-			if !(next.i == n.i || next.j == n.j) { // constrain to sideways
+			if !(next.i == n.I || next.j == n.J) { // constrain to sideways
 				continue
 			}
-			if !seen.Contains([2]int{n.i, n.j}) && next.cost+float64(n.n) <= n.cost {
-				n.prev = next
-				n.cost = float64(n.n) + next.cost
-				heap.Fix(h, n.heapIdx)
+			if !seen.Contains(n.Point()) && next.cost+float64(n.Value.n) <= n.Value.cost {
+				n.Value.prev = next
+				n.Value.cost = float64(n.Value.n) + next.cost
+				heap.Fix(h, n.Value.heapIdx)
 			}
 		}
 	}

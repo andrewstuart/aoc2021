@@ -39,13 +39,17 @@ func aoc(r io.Reader, n int) (int, error) {
 		return 0, fmt.Errorf("error reading header: %w", err)
 	}
 	head = strings.TrimSpace(head)
+	br.ReadString('\n')
 
-	inputs, err := ezaoc.ReadAOC(br, func(st string) Seq {
+	inputs, err := ezaoc.ReadAOC(br, func(st string) (Seq, error) {
+		if st == "" {
+			return Seq{}, io.EOF
+		}
 		strs := strings.Split(st, " -> ")
 		return Seq{
 			From: strs[0],
 			To:   strs[1],
-		}
+		}, nil
 	})
 	if err != nil {
 		return 0, err
