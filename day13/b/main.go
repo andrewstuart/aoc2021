@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"astuart.co/advent2020/pkg/ezaoc"
+	"astuart.co/advent2021/pkg/ezaoc"
 )
 
 func main() {

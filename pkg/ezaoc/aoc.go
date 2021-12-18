@@ -4,14 +4,27 @@ import (
 	"constraints"
 )
 
+type Stack[T any] []T
+
+func (s *Stack[T]) Push(t T) {
+	(*s) = append((*s), t)
+}
+
+func (s *Stack[T]) Pop() T {
+	last := len(*s) - 1
+	o := (*s)[last]
+	*s = (*s)[:last]
+	return o
+}
+
 type Queue[T any] []T
 
 func (q Queue[T]) Len() int {
 	return len(q)
 }
 
-func (q *Queue[T]) Enqueue(t T) {
-	*q = append((*q), t)
+func (q *Queue[T]) Enqueue(t ...T) {
+	*q = append((*q), t...)
 }
 
 func (q *Queue[T]) Dequeue() T {

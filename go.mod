@@ -1,4 +1,4 @@
-module astuart.co/advent2020
+module astuart.co/advent2021
 
 go 1.18
 

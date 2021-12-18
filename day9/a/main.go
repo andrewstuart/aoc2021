@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"astuart.co/advent2020/pkg/ezaoc"
+	"astuart.co/advent2021/pkg/ezaoc"
 	"github.com/davecgh/go-spew/spew"
 )
 

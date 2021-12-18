@@ -8,7 +8,7 @@ import (
 	"math"
 	"os"
 
-	"astuart.co/advent2020/pkg/ezaoc"
+	"astuart.co/advent2021/pkg/ezaoc"
 	"github.com/oyi812/bitpack"
 )
 
