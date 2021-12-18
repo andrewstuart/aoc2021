@@ -7,7 +7,7 @@ import (
 	"os"
 	"sort"
 
-	"astuart.co/advent2021/pkg/ezaoc"
+	"github.com/andrewstuart/advent2021/pkg/ezaoc"
 )
 
 func main() {
