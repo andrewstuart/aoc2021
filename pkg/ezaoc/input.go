@@ -6,11 +6,13 @@ import (
 	"strings"
 )
 
-// ReadAOC takes any bufio.Reader (to prevent loss of bytes in io.EOF cases)
-// and calls the provided func on every space-trimmed input line, returning a
-// slice of that item and any errors encountered. The callee should return
-// io.EOF to cease use of the reader, e.g. in the case of header or footer.
-func ReadAOC[T any](br bufio.Reader, f func(string) (T, error)) ([]T, error) {
+// ReadAOC takes any io.Reader (suggest using bufio.Reader to prevent loss of
+// bytes in io.EOF cases) and calls the provided func on every space-trimmed
+// input line, returning a slice of that item and any errors encountered. The
+// callee should return io.EOF to cease use of the reader, e.g. in the case of
+// header or footer.
+func ReadAOC[T any](r io.Reader, f func(string) (T, error)) ([]T, error) {
+	br := bufio.NewReader(r)
 	var ts []T
 	for {
 		st, err := br.ReadString('\n')
