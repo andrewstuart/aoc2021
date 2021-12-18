@@ -12,10 +12,11 @@ import (
 func TestAOC(t *testing.T) {
 	asrt, rq := assert.New(t), require.New(t)
 
-	f, err := os.OpenFile("{{ .Config.TestOutput }}", os.O_RDONLY, 0400)
+	f, err := os.OpenFile("../test", os.O_RDONLY, 0400)
 	rq.NoError(err)
 
-	out := aoc(bufio.NewReader(f))
-  // TODO replace assert expected value here
-	asrt.Equal(100, out)
+	out, err := aoc(bufio.NewReader(f))
+	asrt.NoError(err)
+	// TODO replace assert expected value here
+	asrt.Equal(10, out)
 }

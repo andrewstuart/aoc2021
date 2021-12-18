@@ -20,14 +20,10 @@ func main() {
 
 	br := bufio.NewReader(f)
 
-	out, err := aoc(br)
-	if err != nil {
-		log.Fatal("error in aoc method: ", err)
-	}
-	log.Println(out)
+	log.Println(aoc(br))
 }
 
-func aoc(r io.Reader) (int, error) {
+func aoc(r io.Reader) (int) {
 	inputs, err := ezaoc.ReadAOC(r, func(st string) (string, error) {
     if st == "" {
       return st, io.EOF
@@ -38,7 +34,11 @@ func aoc(r io.Reader) (int, error) {
 		return 0, err
 	}
 
-	spew.Dump(inputs)
 
-	return 0, fmt.Errorf("not implemented")
+  // Add challenge logic here probably
+  count := 0
+	spew.Dump(inputs)
+  count = len(inputs)
+
+	return count
 }
