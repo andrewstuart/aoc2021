@@ -1,6 +1,7 @@
 package ezaoc
 
 import (
+	"constraints"
 	"strconv"
 	"strings"
 )
@@ -20,4 +21,24 @@ func IntSlicer(delimiter string) func(string) ([]int, error) {
 		}
 		return out, nil
 	}
+}
+
+// MaxOf returns the index and highest valued of the ordered input items based
+// on the given func. If the given slice is zero length or nil, the zero values
+// of types T and U will be returned.
+func MaxOf[T any, U constraints.Ordered](ts []T, value func(T) U) (int, U) {
+	if len(ts) == 0 {
+		var u U
+		return -1, u
+	}
+	idx := -1
+	u := value(ts[0])
+	for i, t := range ts {
+		ft := value(t)
+		if ft < u {
+			idx = i
+			u = ft
+		}
+	}
+	return idx, u
 }
