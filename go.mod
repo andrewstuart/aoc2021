@@ -1,4 +1,4 @@
-module github.com/andrewstuart/advent2021
+module github.com/andrewstuart/aoc2021
 
 go 1.18
 
